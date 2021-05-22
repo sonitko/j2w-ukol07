@@ -55,12 +55,16 @@ public class VizitkaController {
     @PostMapping("/nova")
     public Object pridat(@ModelAttribute("vizitka") @Valid Vizitka vizitka, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "vizitka";
+            return "formular";
         }
         repository.save(vizitka);
         return "redirect:/";
     }
 
-
+    @PostMapping(value = "/{id:[0-9]+}", params = "akce=smazat")
+    public Object smazat(@PathVariable Integer id) {
+        repository.deleteById(id);
+        return "redirect:/";
+    }
 
 }

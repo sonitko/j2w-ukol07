@@ -12,27 +12,32 @@
 </head>
 <body>
 <div class="detail">
-    <form class="vizitka" th:action="@{/nova}" method="post">
+    <form class="vizitka" th:classappend="${#fields.hasErrors('vizitka.*')} ? 'was-validated'" method="post">
         <div class="row">
             <label for="jmeno">Jméno</label>
             <input type="text" id="jmeno" name="jmeno" maxlength="100" required th:field="${vizitka.cele_jmeno}"/>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('vizitka.cele_jmeno')}" th:errors="${vizitka.cele_jmeno}">Jméno je povinný údaj.</div>
         </div>
         <div class="row">
             <label for="firma">Firma</label>
             <input type="text" id="firma" name="firma" maxlength="100" required th:field="${vizitka.firma}"/>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('vizitka.firma')}" th:errors="${vizitka.firma}">Firma je povinný údaj.</div>
         </div>
         <div class="row">
             <label for="ulice">Ulice a čísla</label>
             <input type="text" id="ulice" name="ulice" maxlength="100" required th:field="${vizitka.ulice}"/>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('vizitka.ulice')}" th:errors="${vizitka.ulice}">Ulice je povinný údaj.</div>
         </div>
         <div class="row">
             <label for="obec">Obec</label>
             <input type="text" id="obec" name="obec" maxlength="100" required th:field="${vizitka.obec}"/>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('vizitka.obec')}" th:errors="${vizitka.obec}">Obec je povinný údaj.</div>
         </div>
         <div class="row">
             <label for="psc">PSČ</label>
             <input type="text" id="psc" name="psc" minlength="5" maxlength="5" pattern="[0-9]{5}" required
                    th:field="${vizitka.psc}"/>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('vizitka.psc')}" th:errors="${vizitka.psc}">PSČ je povinný údaj.</div>
         </div>
         <div class="row">
             <label for="email">E-mail <small>(volitelný)</small></label>

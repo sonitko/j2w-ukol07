@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Vizitka {
@@ -30,8 +31,8 @@ public class Vizitka {
     @NotBlank
     private String obec;
 
-    @Length(min = 5, max = 5)
     @NotBlank
+    @Pattern(regexp = "\\d{5}")
     private String psc;
 
     @Length(max = 100)
